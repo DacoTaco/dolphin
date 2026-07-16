@@ -57,8 +57,15 @@ private:
   };
   SDolHeader m_dolheader;
 
-  std::vector<std::vector<u8>> m_data_sections;
-  std::vector<std::vector<u8>> m_text_sections;
+  struct SDolSection
+  {
+    u32 address;
+    u32 sectionSize;
+    bool ancastSection;
+    std::vector<u8> data;
+  };
+
+  std::vector<SDolSection> m_sections;
 
   bool m_is_valid;
   bool m_is_wii;
